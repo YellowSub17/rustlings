@@ -16,6 +16,12 @@
 // - The input is going to be a Vector of 2-length tuples,
 //   the first element is the string, the second one is the command.
 // - The output element is going to be a vector of strings.
+//
+//
+//
+//
+// Needed a bit of help on this one:
+// https://desmodrone.github.io/posts/13-rustlings-quiz2/
 
 enum Command {
     Uppercase,
@@ -28,6 +34,26 @@ mod my_module {
 
     // TODO: Complete the function as described above.
     // pub fn transformer(input: ???) -> ??? { ??? }
+    
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+
+        let mut output = vec![];
+
+        for (s, cmd) in input{
+            let mod_s = match cmd{
+                Command::Uppercase => s.to_uppercase(),
+                Command::Trim => s.trim().to_string(),
+                Command::Append(z) => {
+                    let app = format!("{}{}", s, "bar".repeat(z));
+                    app}
+            };
+            output.push(mod_s);
+        }
+        output
+
+    }
+
+
 }
 
 fn main() {
@@ -38,6 +64,7 @@ fn main() {
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
     // use ???;
+    use crate::my_module::transformer;
     use super::Command;
 
     #[test]
