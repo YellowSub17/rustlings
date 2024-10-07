@@ -10,10 +10,26 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+    //
+
+
+    let nums = 1..num+1;
+
+    //let prod = nums.fold(1, |acc, x| acc*x);
+    //prod
+    
+    nums.product()
+
+
 }
 
 fn main() {
     // You can optionally experiment here.
+    //
+    let num=10+1;
+    let nums = 1..num;
+    for i in nums {println!("{i}");};
+
 }
 
 #[cfg(test)]
